@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h5 class="text-center mt-3 mb-3">Admin Registration</h5>
+    <h3 class="text-center mt-3 mb-3">Admin Registration</h3>
     <form class="text-center mt-3 mb-3">
       <div class="form-group">
           <input type="text" class="mt-2 mb-2" placeholder="Enter Name" v-model="name">
@@ -29,7 +29,10 @@ export default {
   methods: {
     ...mapActions('admin', ['registerAdmin']),
     handleAdmin() {
-
+      if (!this.name || !this.email || !this.password) {
+        alert('Please fill all details');
+        return;
+      }
       this.registerAdmin({
         name: this.name,
         email: this.email,
